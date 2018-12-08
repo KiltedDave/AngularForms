@@ -10,6 +10,7 @@ export function main() {
     .catch(err => console.error(err));
 }
 
+
 // support async tag or hmr
 switch (document.readyState) {
   case 'interactive':
