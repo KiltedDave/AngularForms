@@ -9,12 +9,23 @@ import { clearModulesForTest } from '@angular/core/src/linker/ng_module_factory_
 })
 export class HomeComponent {
   languages = ['English','Spanish','Other'];
-  model = new Employee('Darla','Smith',true, 'w2','English');
+  model = new Employee('','',false,'','default');
+  // 'Darla','Smith',true, 'w2','English'
 
   firstNameToUpperCase(value:string){
     if(value.length > 0)
     this.model.firstName = value.charAt(0).toUpperCase() + value.slice(1);
     else
     this.model.firstName = value;
+  }
+
+  hasPrimaryLanguageError = false;
+
+  validatePrimaryLanguage(value){
+    if(value === 'default')
+      this.hasPrimaryLanguageError = true;
+    else
+      this.hasPrimaryLanguageError = false;
+
   }
 }
