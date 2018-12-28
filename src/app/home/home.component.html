@@ -1,2 +1,53 @@
-<h3>Home Component</h3>
-<p>Welcome to Angular Seed</p>
+<div class="container">
+    <h3>Angular Forms Display</h3>
+<form #form="ngForm" novalidate>
+    <div class="from-group">
+        <label>First Name</label>
+        <input type="text" class="form-control" required name="firstName" 
+        [(ngModel)]="model.firstName"
+        (ngModelChange)="firstNameToUpperCase($event)">
+    </div>
+
+    <div class="from-group">
+        <label>Last Name</label>
+        <input type="text" class="form-control" required name="lastName"
+         [(ngModel)]="model.lastName">
+    </div>
+
+    <div>
+        <label>
+            <input type="checkbox" name="is-fill-time" 
+                [(ngModel)]="model.isFullTime"> Full Time Employee
+        </label>
+    </div>
+
+    <label>Payment Type</label>
+    <div class="radio">
+        <label>
+            <input type="radio" name="paymentType" value="w2" checked
+                [(ngModel)]="model.paymentType">
+            W2                
+        </label>
+        <label>
+            <input type="radio" name="paymentType" value="1099"
+                [(ngModel)]="model.paymentType">
+            1099
+        </label>
+    </div>
+
+    <div>
+        <label>Primary Language</label>
+        <select class="form-control"
+            name="primaryLanguages"
+            [(ngModel)]=model.primaryLanguage>
+            <option *ngFor="let lang of languages">
+                {{ lang }}
+            </option>
+        </select>
+    </div>
+    <button class="btn btn-primary"type="submit">Submit to me</button>
+</form>
+Model: {{ model | json}}
+<br>
+Angular: {{ form.value | json }}
+</div>
